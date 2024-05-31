@@ -1,11 +1,12 @@
 version: '4.5'
 services:
-  app:
+  object-storage:
     container_name: object-storage 
     build:
       context: .
     env_file:
       - .env.prod
     ports:
-      - "50054:8080"
+      - "5250:5250"
+
 
