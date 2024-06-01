@@ -2,7 +2,6 @@ package filereader
 
 import (
 	"io"
-	"log/slog"
 )
 
 type Reader interface {
@@ -18,7 +17,6 @@ type FileReader struct {
 }
 
 func New(r io.Reader, size int64, filename string) *FileReader {
-	slog.Info("creating file reader", slog.String("filename", filename), slog.Int64("size", size), slog.Any("reader", r))
 	return &FileReader{
 		size:     size,
 		filename: filename,

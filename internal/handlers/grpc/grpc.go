@@ -90,10 +90,10 @@ func (s *Server) Upload(stream objectstorage.ObjectStorage_UploadServer) error {
 		}
 
 		fmt.Printf("writted %d bytes\n", n)
-		fmt.Printf("chunk: %v\n", chunk)
+		// fmt.Printf("chunk: %v\n", chunk)
 	}
 
-	slog.Info("new upload", slog.String("filename", file.Filename), slog.Int64("size", file.Size), slog.Any("buffer", file.Buffer))
+	slog.Info("new upload", slog.String("filename", file.Filename), slog.Int64("size", file.Size), slog.Int("buffer len", file.Buffer.Len()))
 
 	reader, err := s.storage.Put(stream.Context(), filereader.New(file.Buffer, file.Size, file.Filename))
 	if err != nil {
